@@ -1,0 +1,20 @@
+<h2>Mon Panier</h2>
+<p> {{ productInCart}}</p>
+<div *ngIf="productInCart!.length > 0; else emptyCart">
+    <h3>Produits dans le panier :</h3>
+    <!-- <ul>
+        <li *ngFor="let product of productInCart">
+            {{ product.name }} - {{ product.price }}€
+        </li>
+    </ul> -->
+
+    <div class="cart-item" *ngFor="let product of productInCart">
+        <span>{{ product.name }} x{{ product.quantity }}</span>
+        <p-button class="delete-btn" label="Supprimer" severity="danger" (onClick)="removeFromCart(product)" />
+    </div>
+
+</div>
+
+<ng-template #emptyCart>
+    <p>Le panier est vide.</p>
+</ng-template>
